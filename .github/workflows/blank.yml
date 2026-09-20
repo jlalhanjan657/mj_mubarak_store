@@ -25,13 +25,15 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+        working-directory: . # اگر آپ کا پروجیکٹ کسی فولڈر کے اندر ہے تو یہاں اس فولڈر کا نام لکھیں (مثلاً my-app)
 
       - name: Build APK
         run: flutter build apk --release
+        working-directory: . # یہاں بھی وہی فولڈر کا نام لکھیں
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: '**/build/app/outputs/flutter-apk/app-release.apk'
           
